@@ -25,11 +25,12 @@ function displayGif() {
     method: "GET"
   }).then(function (response) {
     for (var i = 0; i < 10; i++) {
+      console.log(response);
       $("#gifHolder").append(
         `<div class="col">
         <span>
             <img src="${response.data[i].images.fixed_height_still.url}" data-still="${response.data[i].images.fixed_height_still.url}" data-animate="${response.data[i].images.fixed_height.url}" data-state="still" class="gif">
-            <h4>rated:${response.data[i].rating}</h4>
+            <h4>${response.data[i].title} Rated: ${response.data[i].rating}</h4>
         </span>
       </div>`
       );
@@ -49,7 +50,7 @@ function displayMoreGif() {
         `<div class="col">
         <span>
             <img src="${response.data[i].images.fixed_height_still.url}" data-still="${response.data[i].images.fixed_height_still.url}" data-animate="${response.data[i].images.fixed_height.url}" data-state="still" class="gif">
-            <h4>rated:${response.data[i].rating}</h4>
+            <h4>${response.data[i].title} Rated:${response.data[i].rating}</h4>
         </span>
       </div>`
       );

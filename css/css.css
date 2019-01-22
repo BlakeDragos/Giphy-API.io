@@ -5,8 +5,11 @@
     float: bottom;
 }
 #buttonHolder{
-    margin-top: 5px;
+    margin: 5px;
 }
 .gifs {
     margin-top: 10px;
+}
+.search {
+    margin-left: 5px;
 }
