@@ -2,9 +2,7 @@
 
 var topics = ["Critical Role", "Game Of Thrones", "Brooklyn 99", "My Hero Academia"];
 
-var newgifnumber = 10;
-var newgifmax = 15;
-
+var topic = "";
 function renderButtons() {
   $("#buttonHolder").empty();
   for (var i = 0; i < topics.length; i++) {
@@ -18,17 +16,14 @@ function renderButtons() {
 };
 
 function displayGif() {
-  var topic = $(this).attr("data-name");
-  newgifmax = 15;
-  newgifnumber = 10;
+  topic = $(this).attr("data-name");
   $("#gifHolder").empty();
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q="+topic+"api_key=TnTCgEPlVHqEX4CIuq77xr98jB1lIrfV";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=TnTCgEPlVHqEX4CIuq77xr98jB1lIrfV&limit=50";
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
     for (var i = 0; i < 10; i++) {
       $("#gifHolder").append(
         `<div class="col">
@@ -39,28 +34,27 @@ function displayGif() {
       </div>`
       );
     }
+    $("#moreButton").show();
   });
 };
 
 function displayMoreGif() {
-  // var topic = $(this).attr("data-name");
-  var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=TnTCgEPlVHqEX4CIuq77xr98jB1lIrfV&limit=50";
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
-    for ( newgifnumber < newgifmax; newgifnumber++;) {
+    for (var i = 10; i < 50; i++) {
       $("#gifHolder").append(
         `<div class="col">
         <span>
-            <img src="${response.data[newgifnumber].images.fixed_height_still.url}" data-still="${response.data[newgifnumber].images.fixed_height_still.url}" data-animate="${response.data[newgifnumber].images.fixed_height.url}" data-state="still" class="gif">
-            <h4>rated:${response.data[newgifnumber].rating}</h4>
+            <img src="${response.data[i].images.fixed_height_still.url}" data-still="${response.data[i].images.fixed_height_still.url}" data-animate="${response.data[i].images.fixed_height.url}" data-state="still" class="gif">
+            <h4>rated:${response.data[i].rating}</h4>
         </span>
       </div>`
       );
     }
-    newgifmax = newgifmax + 10;
+    $("#moreButton").hide();
   });
 };
 
@@ -69,7 +63,7 @@ function swichState() {
   if (state === "still") {
     $(this).attr("src", $(this).attr("data-animate"));
     $(this).attr("data-state", "animate");
-  }else {
+  } else {
     $(this).attr("src", $(this).attr("data-still"));
     $(this).attr("data-state", "still");
   }
@@ -81,7 +75,7 @@ function swichState() {
 
 
 renderButtons();
-
+$("#moreButton").hide();
 $("#searchButton").on('click', function () {
   var input = $("#searchInput").val().trim();
   topics.push(input);
