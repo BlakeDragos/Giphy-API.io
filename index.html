@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/css.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Giphy API</title>
+</head>
+
+<body class="">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Giphy Search App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" id="searchInput" type="search" placeholder="New Show" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchButton">Add Button</button>
+            </form>
+        </div>
+    </nav>
+    <div class="text-center" id="buttonHolder"></div>
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center gifs">
+        <div class="row" id="gifHolder">
+        </div>
+    </div>
+    <div class="navbar fixed-bottom bg-light">
+        <img src="Giphy-Powerd-by.gif" alt="watermark" id="watermark">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="moreButton">More</button>
+    </div>
+</body>
+<script src="js/logic.js"></script>
+
+</html>

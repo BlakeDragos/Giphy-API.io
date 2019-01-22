@@ -1,0 +1,12 @@
+#watermark {
+    width: 15%;
+    height: auto;
+    float: right;
+    float: bottom;
+}
+#buttonHolder{
+    margin-top: 5px;
+}
+.gifs {
+    margin-top: 10px;
+}
