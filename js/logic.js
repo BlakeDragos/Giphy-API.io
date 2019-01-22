@@ -1,5 +1,3 @@
-// TnTCgEPlVHqEX4CIuq77xr98jB1lIrfV
-
 var topics = ["Critical Role", "Game Of Thrones", "Brooklyn 99", "My Hero Academia"];
 
 var topic = "";
@@ -25,7 +23,6 @@ function displayGif() {
     method: "GET"
   }).then(function (response) {
     for (var i = 0; i < 10; i++) {
-      console.log(response);
       $("#gifHolder").append(
         `<div class="col">
         <span>
@@ -77,12 +74,15 @@ function swichState() {
 
 renderButtons();
 $("#moreButton").hide();
-$("#searchButton").on('click', function () {
-  var input = $("#searchInput").val().trim();
-  topics.push(input);
-  renderButtons();
-});
 
 $("#moreButton").on('click', displayMoreGif);
 $(document).on('click', ".search", displayGif);
 $(document).on('click', ".gif", swichState);
+$(document).ready(function() {
+  $(document).on('submit', '#my-form', function() {
+    var input = $("#searchInput").val().trim();
+    topics.push(input);
+    renderButtons();
+    return false;
+   });
+});
