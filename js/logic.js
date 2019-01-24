@@ -81,6 +81,7 @@ $(document).on('click', ".gif", swichState);
 $(document).ready(function() {
   $(document).on('submit', '#my-form', function() {
     var input = $("#searchInput").val().trim();
+    $("#searchInput").val("");
     topics.push(input);
     renderButtons();
     return false;
